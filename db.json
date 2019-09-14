@@ -1,8 +1,8 @@
 {
   "movies": [
     {
-      "title": " Fast and Furious: Tokyo Drift",
-      "rating": "2",
+      "title": "  Tokyo Drift",
+      "rating": "3",
       "id": "3"
     },
     {
@@ -14,6 +14,26 @@
       "title": "Kill Bill 2",
       "rating": "3",
       "id": 8
+    },
+    {
+      "title": "IT",
+      "rating": "3",
+      "id": 9
+    },
+    {
+      "title": "Harry Potter",
+      "rating": "2",
+      "id": 10
+    },
+    {
+      "title": "Kill Bill",
+      "rating": "3",
+      "id": 11
+    },
+    {
+      "title": "The Dark Knight",
+      "rating": "4",
+      "id": 12
     }
   ]
 }

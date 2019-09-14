@@ -21,14 +21,21 @@ function refreshMovies(){
 
     console.log('Here are all the movies:');
     movies.forEach(({title, rating, id}) => {
-      let movieItems = '';
+      // Open Movie API
+      fetch(`http://www.omdbapi.com/?t=${title}&apikey=8efa939f`)
+          .then(data => data.json() )
+          .then(movies => {
+            console.log(movies.Poster);
+            let moviePosterImg = movies.Poster;
+            let movieItems = '';
 
-      movieItems += `<div class="card">
+        movieItems += `<div class="card">
                         <div class="card-body d-flex flex-column align-items-center justify-content-center p-1">
                             <h4 class="card-title"> ${title}</h4>
                             <div class="card-text">
                             Rating: ${rating}
                             </div>
+                            <div class="posterBox"><img class="filmPosterImg w-75 max-width: 250px" src="${moviePosterImg}" alt=""></div>
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary editBtn justify-content-end mt-auto" data-toggle="modal" data-target="#exampleModal">
                               Edit Movie
@@ -46,7 +53,7 @@ function refreshMovies(){
                                   </div>
                                   <div class="modal-body">
                                   <p>Edit Movie Title</p>
-<!--                                  input-->
+                                    <!--input-->
                                     <input id="editTitle" class="form-control form-control-sm" type="text" value="" placeholder="Movie Title">
                                     <p>Edit Movie Raiting</p>
                                     <!--Select-->
@@ -86,9 +93,16 @@ function refreshMovies(){
 
       $('.movies').append(movieItems);
       console.log(title, rating, id);
+
+    // I put the end of open movie api here
+
+      // GetMoviePoster(title)
     });
 
     $('.editBtn').on('click', function () {
+
+      console.log('🔥🔥🔥🔥🔥');
+      // Grabs movie title from card user clicks on
       let targetedMovieTitle = $(this).parents('.card-body').children('.card-title').text();
 
       // Adds movie title to the modal input value
@@ -110,8 +124,11 @@ function refreshMovies(){
       getIdNumber().then( data => {
         let idNumber = data;
 
+
+
+
         $('#saveEditBtn').on('click', function () {
-          console.log('test');
+          console.log('save edit buttone is 🔥🔥');
           let movieTitle = $('#editTitle').val();
           let movieRating = $('.editRating').val();
           console.log(movieRating);
@@ -124,10 +141,13 @@ function refreshMovies(){
       });
     })
 
+
+    }) // end of Open Movies API .then()
+        .catch((error)=>{ console.log(error)});
+
+
   }) // End of GetMovies()
-    .catch((error) => {
-    console.log(error);
-  });
+    .catch((error) => { console.log(error);});
 
 } // End of refreshMovies
 
@@ -194,3 +214,38 @@ function deleteMovie(idNum){
 }
 
 
+
+// ===============
+// Trying to fetch movie posters
+
+// function GetMoviePoster(title){
+//
+//   console.log(title);
+//   let movieTitle = title;
+//
+//
+//   let movieData = fetch(`http://www.omdbapi.com/?t=${movieTitle}&apikey=8efa939f`)
+//       .then(data => data.json() )
+//       .then(movies => {
+//         console.log(movies);
+//         console.log(movies.Plot);
+//         console.log(movieTitle);
+//         // console.log(movies.Poster);
+//         let moviePoster = movies.Poster;
+//         let testColor = 'pink';
+//
+//         $('.displayMovieName').text(movies.Plot);
+//         // $('.moviePoster').css(` 'background-image', 'url( '${movies.Poster}' )'` );
+//         $('.moviePoster').css( 'background-image', "url( '"+moviePoster+"' )" ).css('backgroundRepeat', 'no-repeat');
+//         // $('.moviePoster').css('height', '400px').text('a;lsdkjf;lasjdfl;jas;ldfjlk;').css( 'background', testColor );
+//         console.log(moviePoster);
+//
+//       })
+//       .catch((error)=>{ console.log(error)});
+//
+//   return movieData; // Return Movie Poster or data
+//
+// } // End of GetMoviePoster
+//
+//
+// GetMoviePoster();

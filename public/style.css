@@ -35,7 +35,7 @@ header{
     margin: 1em;
 }
 .card-body{
-    height: 10em;
+    /*height: 10em;*/
 }
 #loading{
     text-align: center;
@@ -49,4 +49,17 @@ header{
 .editBtn{
     /*position: relative;*/
     /*bottom: -7px;*/
+}
+
+.moviePoster{
+    height: 300px;
+    width: 200px;
+    background-size: contain;
+    margin: 0 auto;
+}
+
+.filmPosterImg{
+    margin: 10px;
+    /*width: 150px;*/
+    /*height: 150px;*/
 }
