@@ -1,39 +1,84 @@
 {
   "movies": [
     {
-      "title": "  Tokyo Drift",
-      "rating": "3",
-      "id": "3"
-    },
-    {
-      "title": " Pulp Fiction",
-      "rating": "2",
-      "id": 7
-    },
-    {
-      "title": "Kill Bill 2",
-      "rating": "3",
-      "id": 8
+      "title": "E.T. the Extra-Terrestrial",
+      "rating": "4",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMTQ2ODFlMDAtNzdhOC00ZDYzLWE3YTMtNDU4ZGFmZmJmYTczXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+      "plot": "A troubled child summons the courage to help a friendly alien escape Earth and return to his home world.",
+      "boxOffice": "N/A",
+      "id": 1
     },
     {
       "title": "IT",
       "rating": "3",
-      "id": 9
+      "poster": "https://m.media-amazon.com/images/M/MV5BZDVkZmI0YzAtNzdjYi00ZjhhLWE1ODEtMWMzMWMzNDA0NmQ4XkEyXkFqcGdeQXVyNzYzODM3Mzg@._V1_SX300.jpg",
+      "plot": "In the summer of 1989, a group of bullied kids band together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry, their small Maine town.",
+      "boxOffice": "$326,898,358",
+      "id": 2
     },
     {
-      "title": "Harry Potter",
-      "rating": "2",
-      "id": 10
-    },
-    {
-      "title": "Kill Bill",
-      "rating": "3",
-      "id": 11
+      "title": "Forrest Gump",
+      "rating": "4",
+      "poster": "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+      "plot": "The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other history unfold through the perspective of an Alabama man with an IQ of 75.",
+      "boxOffice": "$330,000,000",
+      "id": 3
     },
     {
       "title": "The Dark Knight",
+      "rating": "5",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
+      "plot": "When the menace known as The Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham. The Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+      "boxOffice": "$533,316,061",
+      "id": 4
+    },
+    {
+      "title": "   Infinity War",
+      "rating": "5",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg",
+      "plot": "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.",
+      "boxOffice": "$664,987,816",
+      "id": 5
+    },
+    {
+      "title": "Titanic",
+      "rating": "5",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg",
+      "plot": "A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.",
+      "boxOffice": "N/A",
+      "id": 6
+    },
+    {
+      "title": "The Matrix",
       "rating": "4",
-      "id": 12
+      "poster": "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
+      "plot": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+      "boxOffice": "N/A",
+      "id": 7
+    },
+    {
+      "title": "Jaws",
+      "rating": "3",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg",
+      "plot": "When a killer shark unleashes chaos on a beach community, it's up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.",
+      "boxOffice": "N/A",
+      "id": 8
+    },
+    {
+      "title": "Deadpool",
+      "rating": "4",
+      "poster": "https://m.media-amazon.com/images/M/MV5BYzE5MjY1ZDgtMTkyNC00MTMyLThhMjAtZGI5OTE1NzFlZGJjXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
+      "plot": "A wisecracking mercenary gets experimented on and becomes immortal but ugly, and sets out to track down the man who ruined his looks.",
+      "boxOffice": "$328,674,489",
+      "id": 9
+    },
+    {
+      "title": "Toy Story",
+      "rating": "3",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_SX300.jpg",
+      "plot": "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.",
+      "boxOffice": "N/A",
+      "id": 11
     }
   ]
 }
