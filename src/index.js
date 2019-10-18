@@ -1,6 +1,9 @@
 const $ = require('jquery')
 
-
+// API Fetch Url
+const movieAPIUrl = 'https://api.themoviedb.org/3/search/movie?api_key=bc60faa44c7061b671ee155a3b9e8c3c';
+// First part of url for image
+const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 /**
  * require style imports
  */
@@ -117,6 +120,101 @@ function refreshMovies() {
 
 refreshMovies(); //Initial call
 
+// Validate input from add new movie
+$('.addMovieBtn').on('click', () => {
+
+    if($('#movieTitle').val() === "" && $('#rating').val() === null){
+        $('#movieTitle').css('border-color', 'red');
+        $('#rating').css('border-color', 'red');
+    }else if($('#movieTitle').val() === ""){
+        console.log('null movie input ');
+        $('#movieTitle').css('border-color', 'red')
+    }else if($('#rating').val() === null ){
+        $('#rating').css('border-color', 'red');
+    }
+    else{
+        newMovie($('#movieTitle').val(), $('#rating').val());
+        $('#movieTitle').css('border-color', '#CED4DA');
+        $('#rating').css('border-color', '#CED4DA');
+
+    }
+});
+
+
+// ======================== Movie Poster
+// Gets movie poster img source
+function movieSection(movies) {
+    return movies.map((movie) => {
+        if (movie.poster_path) { // Checking if movie poster is valid or null. Only display posters that have a URL.
+            return `<img class="posterImage" src=${IMAGE_URL + movie.poster_path} data-movie-id=${movie.id}/>`;
+        }
+
+    })
+
+}
+
+//======== Add movie to DOM
+function createMovieContainer(movies) {
+    const movieElement = document.createElement('div');
+    movieElement.setAttribute('class', 'movie');  // Sets the class for movieElement
+
+    const movieTemplate = `
+        <section class="section">
+            ${movieSection(movies)}
+        </section>
+<!--        <div class="content">-->
+<!--            <p id="content-close">X</p>-->
+<!--        </div>   -->
+    `;
+
+    movieElement.innerHTML = movieTemplate;
+    return movieElement;
+}
+
+// data is coming from fetch
+function renderSearchMovies(data) {
+    // data.results []
+    // searchedMovies.innerHTML = ''; // Clears movies after each new movie search
+    // console.log('Data: ', data);
+    const movies = data.results; // returns results array from movie API
+    const movieBlock = createMovieContainer(movies); // Returns movie div container
+    $('#posters').append(movieBlock);  // appends movie div to DOM
+    // posters.appendChild(movieBlock); // appends movie div to DOM
+    console.log('Data from API: ', data);
+    console.log("movies", movies);
+    console.log("movieBlock inside fetch: ", movieBlock);
+}
+
+
+$('#findPoster').on('click', (event) => {
+    event.preventDefault(); // Stop browser from reloading the page when the button is clicked.
+    const searchValue = $('#movieTitle').val(); // Users value
+    // Movie api url with users input as the query
+    const urlWithSearchValue = movieAPIUrl + '&query=' + searchValue;
+    console.log('Search button has been clicked!!!');
+    // loadingScreen.style.display = 'block';// Show loading screen
+    // setTimeout(function () {
+    console.log(urlWithSearchValue);
+    // ====== Fetch request ======
+        fetch(urlWithSearchValue)
+            .then((data) => data.json())
+            .then((data) => {
+                console.log("inside fetch", data);
+                renderSearchMovies(data); // sends movie data to render HTML to send movie poster to DOM.
+                // loadingScreen.style.display = 'none'; // Hide loading screen
+            })
+            .catch((error) => {
+                console.log('Error: ', error);
+            });
+    // }, 1750);
+
+    // searchInput.value = ''; // Clears the search input after the search btn has been clicked.
+    console.log("Search Value:", searchValue);
+});
+
+
+
+
 function newMovie(movieTitle, movieRating) {
 
     const blogPost = {title: movieTitle, rating: movieRating};
@@ -139,27 +237,6 @@ function newMovie(movieTitle, movieRating) {
 } // End of newMovie()
 
 
-
-$('.addMovieBtn').on('click', () => {
-
-    if($('#movieTitle').val() === "" && $('#rating').val() === null){
-        $('#movieTitle').css('border-color', 'red')
-        $('#rating').css('border-color', 'red');
-    }else if($('#movieTitle').val() === ""){
-        console.log('null movie input ');
-        $('#movieTitle').css('border-color', 'red')
-    }else if($('#rating').val() === null ){
-        $('#rating').css('border-color', 'red');
-    }
-    else{
-        newMovie($('#movieTitle').val(), $('#rating').val());
-        $('#movieTitle').css('border-color', '#CED4DA');
-        $('#rating').css('border-color', '#CED4DA');
-
-    }
-});
-
-
 function modify(movieTitle, movieRating, idNum) {
     const blogPost = {title: movieTitle, rating: movieRating};
     const url = `/api/movies/${idNum}`;
@@ -180,20 +257,22 @@ function modify(movieTitle, movieRating, idNum) {
 
 function deleteMovie(idNum) {
 
-        const url = `/api/movies/${idNum}`;
-        const options = {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+    const url = `/api/movies/${idNum}`;
+    const options = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
 
-        };
-        fetch(url, options)
-            .then((data) => console.log('Post was successful', data)/* post was created successfully */)
-            .catch((data) => console.log('Post unsuccessful', data) /* handle errors */);
+    };
+    fetch(url, options)
+        .then((data) => console.log('Post was successful', data)/* post was created successfully */)
+        .catch((data) => console.log('Post unsuccessful', data) /* handle errors */);
 
-        refreshMovies();
+    refreshMovies();
 
 }
+
+
 
 

@@ -62,7 +62,8 @@ header{
 }
 .add-card{
     width: 18em;
-    height: 13.65em;
+    min-height: 13.65em;
+    /*height: 13.65em;*/
 }
 
 .editBtn{
@@ -96,4 +97,39 @@ header{
     font-size: .8em;
     line-height: 7px;
     padding: .2em;
+}
+
+/*Movie images*/
+.posterImage{
+    width: 150px;
+    transition: 250ms all;
+    cursor: pointer;
+
+    /*Animation for movies posters upon load*/
+    -webkit-animation: appear 2s;
+    animation: appear 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+/*Animation for movies posters upon load*/
+@-webkit-keyframes appear {
+    0% { left: 500px; opacity: 0; }
+    100% { left: 16px; opacity: 1; }
+}
+/*Animation for movies posters upon load*/
+@keyframes appear {
+    0% { left: 500px; opacity: 0; }
+    100% { left: 16px; opacity: 1; }
+}
+
+.posterImage:hover {
+    margin-left: 0 40px;
+    transform: scale(1.1);
+
+}
+
+.section{
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
 }
